@@ -59,6 +59,7 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
+
                     System.out.println("Search all fields not yet implemented.");
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
@@ -78,7 +79,7 @@ public class TechJobs {
         // associate an integer with each one
         Integer i = 0;
         for (String choiceKey : choices.keySet()) {
-            choiceKeys[i] = choiceKey.toLowerCase();
+            choiceKeys[i] = choiceKey;
             i++;
         }
 
@@ -95,7 +96,7 @@ public class TechJobs {
             in.nextLine();
 
             // Validate user's input
-            if (choiceIdx < 0 || choiceIdx >= choiceKeys.length) {
+            if (choiceIdx < 0 || choiceIdx >= choiceKeys.length ) {
                 System.out.println("Invalid choice. Try again.");
             } else {
                 validChoice = true;
@@ -109,34 +110,18 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        for(HashMap <String,String> job: someJobs) {
-
+        for (HashMap<String, String> job : someJobs) {
             System.out.println("*****");
 
             for (String key : job.keySet()) {
-
                 System.out.println(key + ": " + job.get(key));
+
+            }
+        }
+            if(someJobs.size() == 0) {
+                System.out.println("That location is unavailable.");
             }
         }
     }
 
-//    Copied from JobData: need to refactor
-//    public static ArrayList<HashMap<String, String>> findByValue(String column, String value) {
-//
-//        // load data, if not already loaded
-//        loadData();
-//
-//        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
-//
-//        for (HashMap<String, String> row : allJobs) {
-//
-//            String aValue = row.get(column);
-//
-//            if (aValue.contains(value)) {
-//                jobs.add(row);
-//            }
-//        }
-//           return jobs;
-//    }
 
-}
