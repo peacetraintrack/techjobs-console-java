@@ -50,6 +50,7 @@ public class JobData {
         loadData();
         Object allJobClone = allJobs.clone();
         return (ArrayList<HashMap<String, String>>) allJobClone;
+//        return allJobs;
     }
 
     /**
