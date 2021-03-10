@@ -81,16 +81,21 @@ public class JobData {
 
         return jobs;
     }
+
     public static ArrayList<HashMap<String, String>> findByValue ( String value) {
 
         loadData();
+
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row: allJobs) {
+
            for(Map.Entry<String, String> entry: row.entrySet()) {
 
                String aValue = entry.getValue();
+
                if(aValue.toLowerCase().contains(value.toLowerCase())) {
+
                    jobs.add(row);
                }
            }

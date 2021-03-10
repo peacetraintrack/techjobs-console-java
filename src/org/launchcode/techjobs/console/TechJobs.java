@@ -112,8 +112,8 @@ public class TechJobs {
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
         if (someJobs.size() == 0) {
-            System.out.println("That location is unavailable.");
-        } else {
+            System.out.println("That choice is unavailable.");
+        }else{
             for (HashMap<String, String> job : someJobs) {
                 System.out.println("*****");
 
@@ -121,9 +121,10 @@ public class TechJobs {
                     System.out.println(key + ": " + job.get(key));
 
                 }
+
+                }
             }
 
         }
     }
 
-}
