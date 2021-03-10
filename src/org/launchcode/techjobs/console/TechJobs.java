@@ -9,7 +9,7 @@ public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -59,8 +59,9 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
+                    printJobs(JobData.findByValue(searchField));
 
-                    System.out.println("Search all fields not yet implemented.");
+//                    System.out.println("Search all fields not yet implemented.");
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -96,13 +97,13 @@ public class TechJobs {
             in.nextLine();
 
             // Validate user's input
-            if (choiceIdx < 0 || choiceIdx >= choiceKeys.length ) {
+            if (choiceIdx < 0 || choiceIdx >= choiceKeys.length) {
                 System.out.println("Invalid choice. Try again.");
             } else {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
@@ -110,18 +111,19 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        for (HashMap<String, String> job : someJobs) {
-            System.out.println("*****");
+        if (someJobs.size() == 0) {
+            System.out.println("That location is unavailable.");
+        } else {
+            for (HashMap<String, String> job : someJobs) {
+                System.out.println("*****");
 
-            for (String key : job.keySet()) {
-                System.out.println(key + ": " + job.get(key));
+                for (String key : job.keySet()) {
+                    System.out.println(key + ": " + job.get(key));
 
+                }
             }
-        }
-            if(someJobs.size() == 0) {
-                System.out.println("That location is unavailable.");
-            }
+
         }
     }
 
-
+}
